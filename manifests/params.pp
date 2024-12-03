@@ -52,13 +52,8 @@ class grub2::params {
       $package_name_legacy = 'grub-legacy'
     }
     'Redhat': {
-      if 'efi' in $facts {
-        $install_binary    = '/usr/sbin/grub2-install --efi-directory=/boot/efi'
-        $update_binary     = '/usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg'
-      } else {
-        $install_binary    = '/usr/sbin/grub2-install'
-        $update_binary     = '/usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg'
-      }
+      $install_binary    = '/usr/sbin/grub2-install'
+      $update_binary     = '/usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg'
       $config_file         = '/etc/default/grub'
       $distributor         = "$(sed 's, release .*$,,g' /etc/system-release)"
       $package_name        = ['grub2', 'grub2-tools']
@@ -78,13 +73,8 @@ class grub2::params {
       $package_name_legacy = undef
     }
     'Suse': {
-      if 'efi' in $facts {
-        $install_binary    = '/usr/sbin/grub2-install --efi-directory=/boot/efi'
-        $update_binary     = '/usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg'
-      } else {
-        $install_binary    = '/usr/sbin/grub2-install'
-        $update_binary     = '/usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg'
-      }
+      $install_binary    = '/usr/sbin/grub2-install'
+      $update_binary     = '/usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg'
       $config_file         = '/etc/default/grub'
       $distributor         = '$(lsb_release -i -r -s 2> /dev/null || echo SUSE)'
       $package_name        = ['grub2']
